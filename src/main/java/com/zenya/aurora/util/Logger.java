@@ -28,6 +28,6 @@ public final class Logger {
     }
 
     private static String adjustResetFormat(String message, String append) {
-        return message.replaceAll("§r", "§r" + append);
+        return message.replace("§r", "§r" + append);
     }
 }

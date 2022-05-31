@@ -6,12 +6,9 @@ main: com.zenya.aurora.Aurora
 api-version: 1.18
 softdepend: [WorldGuard, LightAPI]
 
-commands:
-  aurora:
-    description: Main command for Aurora
-    aliases: []
-    permission: aurora.command.help
-    usage: /<command>
+libraries:
+  - org.bstats:bstats-bukkit:${bstats.bukkit}
+  - co.aikar:acf-paper:${acf.version}
 
 permissions:
   aurora.*:

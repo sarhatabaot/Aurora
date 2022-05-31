@@ -1,10 +1,10 @@
 package com.zenya.aurora;
 
+import co.aikar.commands.PaperCommandManager;
 import com.zenya.aurora.api.AuroraAPI;
 import com.zenya.aurora.api.ParticleFactory;
-import com.zenya.aurora.command.AuroraTab;
-import com.zenya.aurora.util.ext.LightAPI;
 import com.zenya.aurora.command.AuroraCommand;
+import com.zenya.aurora.util.ext.LightAPI;
 import com.zenya.aurora.event.Listeners;
 import com.zenya.aurora.util.ext.ZParticle;
 import com.zenya.aurora.storage.ParticleFileCache;
@@ -15,6 +15,7 @@ import com.zenya.aurora.storage.ParticleManager;
 import com.zenya.aurora.util.Logger;
 import com.zenya.aurora.worldguard.AmbientParticlesFlag;
 import com.zenya.aurora.worldguard.WGManager;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -49,7 +50,7 @@ public class Aurora extends JavaPlugin {
         instance = this;
 
         // Enables Metrics
-        new MetricsLite(this, 12646);
+        new Metrics(this, 12646);
 
         //Register API
         AuroraAPI.setAPI(new AuroraAPIImpl());
@@ -74,8 +75,8 @@ public class Aurora extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
 
         //Register commands
-        this.getCommand("aurora").setExecutor(new AuroraCommand());
-        this.getCommand("aurora").setTabCompleter(new AuroraTab());
+        PaperCommandManager commandManager = new PaperCommandManager(this);
+        commandManager.registerCommand(new AuroraCommand());
     }
 
     @Override
