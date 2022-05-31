@@ -46,12 +46,12 @@ public class AuroraCommand implements CommandExecutor {
 
         //help, toggle, reload, status
         if (args.length == 1) {
-            if (args[0].toLowerCase().equals("help")) {
+            if (args[0].equalsIgnoreCase("help")) {
                 sendUsage(sender);
                 return true;
             }
 
-            if (args[0].toLowerCase().equals("toggle")) {
+            if (args[0].equalsIgnoreCase("toggle")) {
                 if (!(sender instanceof Player)) {
                     chat.sendMessages("player-required");
                     return true;
@@ -69,7 +69,7 @@ public class AuroraCommand implements CommandExecutor {
                 return true;
             }
 
-            if (args[0].toLowerCase().equals("reload")) {
+            if (args[0].equalsIgnoreCase("reload")) {
                 StorageFileManager.reloadFiles();
                 if (!StorageFileManager.getConfig().getBool("enable-lighting")) {
                     try {
@@ -88,7 +88,7 @@ public class AuroraCommand implements CommandExecutor {
                 return true;
             }
 
-            if (args[0].toLowerCase().equals("status")) {
+            if (args[0].equalsIgnoreCase("status")) {
                 String globalFiles = "";
                 if (ParticleFileManager.INSTANCE.getParticles() == null || ParticleFileManager.INSTANCE.getParticles().size() == 0) {
                     //No particle files
@@ -98,8 +98,7 @@ public class AuroraCommand implements CommandExecutor {
                         //Check if enabled or disabled
                         String particleName = particleFile.isEnabled() ? ChatBuilder.translateColor("&a") : ChatBuilder.translateColor("&c");
                         //If enabled, check if active in region/biome
-                        if (particleFile.isEnabled() && sender instanceof Player) {
-                            Player player = (Player) sender;
+                        if (particleFile.isEnabled() && sender instanceof Player player) {
                             Biome biome = player.getLocation().getBlock().getBiome();
                             String biomeName = biome.toString();
 
@@ -139,7 +138,7 @@ public class AuroraCommand implements CommandExecutor {
 
         //toggle, fixlighting
         if (args.length == 2) {
-            if (args[0].toLowerCase().equals("toggle")) {
+            if (args[0].equalsIgnoreCase("toggle")) {
                 if (!(sender instanceof Player)) {
                     chat.sendMessages("player-required");
                     return true;
@@ -165,7 +164,7 @@ public class AuroraCommand implements CommandExecutor {
                 return true;
             }
 
-            if (args[0].toLowerCase().equals("fixlighting")) {
+            if (args[0].equalsIgnoreCase("fixlighting")) {
                 if (!(sender instanceof Player)) {
                     chat.sendMessages("player-required");
                     return true;

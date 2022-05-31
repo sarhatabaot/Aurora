@@ -51,10 +51,6 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class ZParticle implements ParticleFactory {
 
-    public ZParticle() {
-
-    }
-
     /**
      * An optimized and stable way of getting particles for cross-version support.
      *
@@ -141,7 +137,7 @@ public class ZParticle implements ParticleFactory {
             return c;
         }
 
-        char selection[] = new char[]{'x', 'y', 'z'};
+        char[] selection = new char[]{'x', 'y', 'z'};
         return selection[randInt(0, 2)];
     }
 
@@ -184,11 +180,11 @@ public class ZParticle implements ParticleFactory {
                     {0, 0, 0}
                 };
             default -> {
-                char selection[] = new char[]{'x', 'y', 'z'};
+                char[] selection = new char[]{'x', 'y', 'z'};
                 return rotateAbout(vec, ref, angle, selection[randInt(0, 2)]);
             }
         }
-        double result[] = new double[3];
+        double[] result = new double[3];
 
         for (int i = 0; i < 3; i++) {
             result[i] = 0;

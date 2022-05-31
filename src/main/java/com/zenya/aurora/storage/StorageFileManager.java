@@ -17,12 +17,12 @@ public class StorageFileManager {
      */
     private static final int CONFIG_FILE_VERSION = 4;
     private static final boolean CONFIG_RESET_FILE = true;
-    private static final List<String> CONFIG_IGNORED_NODES = new ArrayList<String>() {
+    private static final List<String> CONFIG_IGNORED_NODES = new ArrayList<>() {
         {
             add("config-version");
         }
     };
-    private static final List<String> CONFIG_REPLACE_NODES = new ArrayList<String>() {
+    private static final List<String> CONFIG_REPLACE_NODES = new ArrayList<>() {
         {
             add("disabled-worlds");
         }
@@ -33,7 +33,7 @@ public class StorageFileManager {
      */
     private static final int MESSAGES_FILE_VERSION = 1;
     private static final boolean MESSAGES_RESET_FILE = false;
-    private static final List<String> MESSAGES_IGNORED_NODES = new ArrayList<String>() {
+    private static final List<String> MESSAGES_IGNORED_NODES = new ArrayList<>() {
         {
             add("config-version");
         }
@@ -45,7 +45,7 @@ public class StorageFileManager {
      */
     private static final int BIOMES_FILE_VERSION = 0; //Unused for now
     private static final boolean BIOMES_RESET_FILE = false;
-    private static final List<String> BIOMES_IGNORED_NODES = new ArrayList<String>() {
+    private static final List<String> BIOMES_IGNORED_NODES = new ArrayList<>() {
         {
             add("config-version");
         }

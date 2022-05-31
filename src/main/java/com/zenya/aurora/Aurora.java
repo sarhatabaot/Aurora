@@ -93,9 +93,9 @@ public class Aurora extends JavaPlugin {
         }
     }
 
-    private class AuroraAPIImpl extends AuroraAPI {
+    private static class AuroraAPIImpl extends AuroraAPI {
 
-        private ParticleFactory factory = new ZParticle();
+        private final ParticleFactory factory = new ZParticle();
 
         @Override
         public ParticleFactory getParticleFactory() {

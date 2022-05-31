@@ -36,7 +36,7 @@ public class TrackTPSTask implements AuroraTask {
                 long tdiff = now - start;
 
                 if (tdiff > 0) {
-                    instTps = (float) (1000 / tdiff);
+                    instTps = (1000f / tdiff);
                 }
             }
         }.runTaskTimer(Aurora.getInstance(), 0, 1);

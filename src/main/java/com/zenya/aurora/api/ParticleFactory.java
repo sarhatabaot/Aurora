@@ -29,7 +29,7 @@ public interface ParticleFactory {
      * @since ZParticle 1.0.1
      */
     static ZParticleDisplay toDisplay(Particle particle) {
-        return toDisplay(particle, Bukkit.getOnlinePlayers().toArray(new Player[Bukkit.getOnlinePlayers().size()]));
+        return toDisplay(particle, Bukkit.getOnlinePlayers().toArray(new Player[0]));
     }
 
     /**

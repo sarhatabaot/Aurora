@@ -387,8 +387,7 @@ public class ZParticleDisplay {
     @Nonnull
     public Location spawn(@Nonnull Location loc) {
         if (data != null) {
-            if (data instanceof float[]) {
-                float[] datas = (float[]) data;
+            if (data instanceof float[] datas) {
                 if (ISFLAT) {
                     Particle.DustOptions dust = new Particle.DustOptions(org.bukkit.Color.fromRGB((int) datas[0], (int) datas[1], (int) datas[2]), datas[3]);
                     if (players == null) {

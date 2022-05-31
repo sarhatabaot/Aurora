@@ -20,8 +20,7 @@ public class CompatibilityHandler {
         1.16.5 - v1_16_R3
          */
         String name = Bukkit.getServer().getClass().getPackage().getName();
-        String version = name.substring(name.lastIndexOf('.') + 1);
-        return version;
+        return name.substring(name.lastIndexOf('.') + 1);
     }
 
     public static int getProtocol() {

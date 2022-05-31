@@ -73,7 +73,7 @@ public final class LocationTools {
                 nearbyChunks.add(new ChunkContainer(chunk.getWorld(), x, z));
             }
         }
-        return nearbyChunks.toArray(new ChunkContainer[nearbyChunks.size()]);
+        return nearbyChunks.toArray(new ChunkContainer[0]);
     }
 
     /**
@@ -131,7 +131,7 @@ public final class LocationTools {
      * @return An array of available locations to spawn particles
      */
     public static CompletableFuture<Location[]> getParticleLocations(ChunkContainer[] chunks, double y1, double y2, double distance, double randMultiplier, boolean shuffle) {
-        CompletableFuture<Location[]> future = CompletableFuture.supplyAsync(() -> {
+        return CompletableFuture.supplyAsync(() -> {
             //Get location bounds
             Location[] locBounds = getLocationBounds(chunks);
             Location l1 = locBounds[0];
@@ -167,6 +167,5 @@ public final class LocationTools {
             }
             return locs;
         });
-        return future;
     }
 }

@@ -15,11 +15,11 @@ import ru.beykerykt.minecraft.lightapi.common.api.engine.LightFlag;
 
 public abstract class ParticleTask {
 
-    public BukkitTask runnables[];
+    public BukkitTask[] runnables;
     public int locIndex = 0;
 
     public Player player;
-    public Location locs[];
+    public Location[] locs;
     public Particle particle;
     public ZParticleDisplay display;
     public int maxCount;

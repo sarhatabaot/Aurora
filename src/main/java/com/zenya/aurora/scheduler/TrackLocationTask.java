@@ -16,11 +16,11 @@ import java.util.concurrent.CompletableFuture;
 public class TrackLocationTask implements AuroraTask {
 
     public static final TrackLocationTask INSTANCE = new TrackLocationTask();
-    private BukkitTask runnables[];
+    private BukkitTask[] runnables;
     private CompletableFuture<HashMap<Player, Location>> playerCoords;
 
     public TrackLocationTask() {
-        playerCoords = CompletableFuture.supplyAsync(() -> new HashMap<>());
+        playerCoords = CompletableFuture.supplyAsync(HashMap::new);
         runTasks();
     }
 
