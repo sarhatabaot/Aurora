@@ -4,7 +4,7 @@ import co.aikar.commands.PaperCommandManager;
 import com.zenya.aurora.api.AuroraAPI;
 import com.zenya.aurora.api.ParticleFactory;
 import com.zenya.aurora.command.AuroraCommand;
-import com.zenya.aurora.util.ext.LightAPI;
+import com.zenya.aurora.util.ext.LightUtil;
 import com.zenya.aurora.event.Listeners;
 import com.zenya.aurora.util.ext.ZParticle;
 import com.zenya.aurora.storage.ParticleFileCache;
@@ -23,7 +23,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Aurora extends JavaPlugin {
 
     private static Aurora instance;
-    private LightAPI lightAPI;
+    private LightUtil lightAPI;
     private TaskManager taskManager;
     private StorageFileManager storageFileManager;
     private ParticleFileManager particleFileManager;
@@ -60,7 +60,7 @@ public class Aurora extends JavaPlugin {
 
         //Init LightAPI
         if (StorageFileManager.getConfig().getBool("enable-lighting")) {
-            lightAPI = LightAPI.INSTANCE;
+            lightAPI = LightUtil.INSTANCE;
         }
 
         //Init particle files
@@ -88,7 +88,7 @@ public class Aurora extends JavaPlugin {
             pm.unregisterTasks(player, true);
         }
         try {
-            LightAPI.disable();
+            LightUtil.disable();
         } catch (NoClassDefFoundError exc) {
             //Silence errors
         }

@@ -5,7 +5,7 @@ import com.zenya.aurora.storage.StorageFileManager;
 import com.zenya.aurora.util.ext.ZParticleDisplay;
 import com.zenya.aurora.file.ParticleFile;
 import com.zenya.aurora.scheduler.TaskKey;
-import com.zenya.aurora.util.ext.LightAPI;
+import com.zenya.aurora.util.ext.LightUtil;
 import com.zenya.aurora.util.RandomNumber;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -65,7 +65,7 @@ public abstract class ParticleTask {
 
         if (lighting) {
             for (Location loc : locs) {
-                LightAPI.clearLight(loc, LightFlag.BLOCK_LIGHTING, true, isShutdown);
+                LightUtil.clearLight(loc, LightFlag.BLOCK_LIGHTING, true, isShutdown);
             }
         }
     }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 import ru.beykerykt.minecraft.lightapi.common.api.engine.LightFlag;
-import com.zenya.aurora.util.ext.LightAPI;
+import com.zenya.aurora.util.ext.LightUtil;
 
 //For particles tasks which require setting lighting at multiple locations
 public abstract class ComplexParticleTask extends ParticleTask {
@@ -52,8 +52,8 @@ public abstract class ComplexParticleTask extends ParticleTask {
                         new BukkitRunnable() {
                             @Override
                             public void run() {
-                                LightAPI.setLight(locs[locIndex], LightFlag.BLOCK_LIGHTING, 15, true, false);
-                                LightAPI.setLight(locs[locIndex + 1], LightFlag.BLOCK_LIGHTING, 15, true, false);
+                                LightUtil.setLight(locs[locIndex], LightFlag.BLOCK_LIGHTING, 15, true, false);
+                                LightUtil.setLight(locs[locIndex + 1], LightFlag.BLOCK_LIGHTING, 15, true, false);
                             }
                         }.runTask(Aurora.getInstance());
                     }

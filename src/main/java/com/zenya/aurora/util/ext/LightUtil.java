@@ -1,6 +1,7 @@
 package com.zenya.aurora.util.ext;
 
 import org.bukkit.Location;
+import ru.beykerykt.minecraft.lightapi.common.LightAPI;
 import ru.beykerykt.minecraft.lightapi.common.api.engine.EditPolicy;
 import ru.beykerykt.minecraft.lightapi.common.api.engine.SendPolicy;
 
@@ -9,16 +10,9 @@ import ru.beykerykt.minecraft.lightapi.common.api.engine.SendPolicy;
  *
  * @version 5.0.0-preview
  */
-public class LightAPI {
-
-    public static LightAPI INSTANCE = new LightAPI();
-    private static ru.beykerykt.minecraft.lightapi.common.LightAPI mAPI;
-    private static boolean disabled;
-
-    public LightAPI() {
-        mAPI = ru.beykerykt.minecraft.lightapi.common.LightAPI.get();
-        disabled = false;
-    }
+public class LightUtil {
+    private static final LightAPI mAPI = LightAPI.get();
+    private static boolean disabled = false;
 
     public static void disable() {
         disabled = true;

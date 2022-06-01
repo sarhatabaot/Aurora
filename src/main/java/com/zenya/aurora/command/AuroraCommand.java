@@ -18,7 +18,7 @@ import com.zenya.aurora.storage.ToggleManager;
 import com.zenya.aurora.util.ChatBuilder;
 import com.zenya.aurora.util.ChunkContainer;
 import com.zenya.aurora.util.LocationTools;
-import com.zenya.aurora.util.ext.LightAPI;
+import com.zenya.aurora.util.ext.LightUtil;
 import com.zenya.aurora.worldguard.AmbientParticlesFlag;
 import com.zenya.aurora.worldguard.WGManager;
 import org.bukkit.Bukkit;
@@ -81,7 +81,7 @@ public class AuroraCommand extends BaseCommand {
         StorageFileManager.reloadFiles();
         if (!StorageFileManager.getConfig().getBool("enable-lighting")) {
             try {
-                LightAPI.disable();
+                LightUtil.disable();
             } catch (NoClassDefFoundError exc) {
                 // Already disabled, do nothing
             }

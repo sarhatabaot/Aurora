@@ -2,7 +2,7 @@ package com.zenya.aurora.particle;
 
 import com.zenya.aurora.Aurora;
 import com.zenya.aurora.file.ParticleFile;
-import com.zenya.aurora.util.ext.LightAPI;
+import com.zenya.aurora.util.ext.LightUtil;
 import com.zenya.aurora.util.RandomNumber;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -51,7 +51,7 @@ public abstract class SimpleParticleTask extends ParticleTask {
                         new BukkitRunnable() {
                             @Override
                             public void run() {
-                                LightAPI.setLight(locs[locIndex], LightFlag.BLOCK_LIGHTING, 15, true, false);
+                                LightUtil.setLight(locs[locIndex], LightFlag.BLOCK_LIGHTING, 15, true, false);
                             }
                         }.runTask(Aurora.getInstance());
                     }
