@@ -18,6 +18,10 @@ public class LightUtil {
         disabled = true;
     }
 
+    public static void enable() {
+        disabled = false;
+    }
+
     /**
      * A method to remove lighting and instantly update it client-side
      *

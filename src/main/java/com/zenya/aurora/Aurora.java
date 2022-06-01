@@ -35,7 +35,7 @@ public class Aurora extends JavaPlugin {
         //WorldGuard dependency
         if (WGManager.getWorldGuard() != null) {
             try {
-                ambientParticlesFlag = AmbientParticlesFlag.INSTANCE;
+                ambientParticlesFlag = AmbientParticlesFlag.INSTANCE; //set, great, where is it accessed?
             } catch (Exception exc) {
                 Logger.logError("PlugMan or /reload is not supported by Aurora");
                 Logger.logError("If you're updating your particle configs, use /aurora reload");
@@ -60,7 +60,7 @@ public class Aurora extends JavaPlugin {
 
         //Init LightAPI
         if (StorageFileManager.getConfig().getBool("enable-lighting")) {
-            lightAPI = LightUtil.INSTANCE;
+            LightUtil.enable();
         }
 
         //Init particle files

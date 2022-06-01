@@ -16,10 +16,13 @@ public class TimeCheck {
 
         if (MAX_TIME > MIN_TIME) {
             return (relTime > MIN_TIME && relTime < MAX_TIME);
-        } else if (MAX_TIME < MIN_TIME) {
-            return (relTime > MIN_TIME || relTime < MAX_TIME);
-        } else {
-            return relTime == MIN_TIME;
         }
+
+        if (MAX_TIME < MIN_TIME) {
+            return (relTime > MIN_TIME || relTime < MAX_TIME);
+        }
+
+        return relTime == MIN_TIME;
+
     }
 }
