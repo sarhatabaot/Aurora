@@ -19,17 +19,17 @@ public class RandomNumber<T extends Number & Comparable<T>> {
         upperBound = num1.compareTo(num2) > 0 ? num1 : num2;
     }
 
-    public RandomNumber withLowerBound(T lowerBound) {
+    public RandomNumber<T> withLowerBound(T lowerBound) {
         this.lowerBound = lowerBound;
         return this;
     }
 
-    public RandomNumber withUpperBound(T upperBound) {
+    public RandomNumber<T> withUpperBound(T upperBound) {
         this.upperBound = upperBound;
         return this;
     }
 
-    public RandomNumber withBounds(T lowerBound, T upperBound) {
+    public RandomNumber<T> withBounds(T lowerBound, T upperBound) {
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
         return this;
@@ -72,7 +72,7 @@ public class RandomNumber<T extends Number & Comparable<T>> {
                             return new RandomNumber(jsonArray.get(0).getAsDouble(), jsonArray.get(1).getAsDouble());
                         } else {
                             //All long
-                            return new RandomNumber(jsonArray.get(0).getAsLong(), jsonArray.get(1).getAsLong());
+                            return new RandomNumber(jsonArray.get(0).getAsLong(),jsonArray.get(1).getAsLong());
                         }
                     } else {
                         //[value]

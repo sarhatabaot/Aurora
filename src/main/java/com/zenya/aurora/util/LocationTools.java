@@ -154,7 +154,7 @@ public final class LocationTools {
                 }
             }
 
-            Location[] locs = locList.toArray(new Location[locList.size()]);
+            Location[] locs = locList.toArray(new Location[0]);
             //Randomise locations
             if (shuffle) {
                 int n = locs.length;

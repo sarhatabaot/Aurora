@@ -48,7 +48,7 @@ public class ZParticleDisplay {
      * @param offsetz the z offset.
      * @param extra in most cases extra is the speed of the particles.
      * @param players the list of players particles are displayed to.
-     * @return a ZParticleDisplay object.
+     * a ZParticleDisplay object.
      */
     private ZParticleDisplay(@Nonnull Particle particle, @Nullable Callable<Location> locationCaller, @Nullable Location location, int count, double offsetx, double offsety, double offsetz, double extra, Player... players) {
         this.particle = particle;
@@ -318,7 +318,6 @@ public class ZParticleDisplay {
      * @param players the array of players to send the particle to.
      * @since ZParticleDisplay 1.0.1
      */
-    @Nullable
     public void withPlayers(Player[] players) {
         this.players = players;
     }

@@ -19,7 +19,7 @@ public class WGManager {
 
     public static WorldGuardPlugin getWorldGuard() {
         Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
-        return (plugin == null || !(plugin instanceof WorldGuardPlugin)) ? null : (WorldGuardPlugin) plugin;
+        return (!(plugin instanceof WorldGuardPlugin)) ? null : (WorldGuardPlugin) plugin;
     }
 
     public ApplicableRegionSet getApplicableRegionSet(Player player) {

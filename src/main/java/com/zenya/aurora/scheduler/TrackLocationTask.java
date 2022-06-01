@@ -56,7 +56,7 @@ public class TrackLocationTask implements AuroraTask {
                     }
                 });
             }
-        }.runTaskTimerAsynchronously(Aurora.getInstance(), 0, 20 * 3);
+        }.runTaskTimerAsynchronously(Aurora.getInstance(), 0, 20 * (long) 3);
 
         //Task to update location map
         BukkitTask task2 = new BukkitRunnable() {

@@ -1,6 +1,7 @@
 package com.zenya.aurora.file;
 
 import com.zenya.aurora.Aurora;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.sql.*;
@@ -23,12 +24,12 @@ public class DBFile extends StorageFile {
         }
     }
 
+    @Nullable
     private static Connection connect() {
         String url = "jdbc:sqlite:" + Aurora.getInstance().getDataFolder() + File.separator + "database.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,7 +37,7 @@ public class DBFile extends StorageFile {
     }
 
     private static void sendStatement(String sql) {
-        sendPreparedStatement(sql, null);
+        sendPreparedStatement(sql, (Object) null);
     }
 
     private static void sendPreparedStatement(String sql, Object... parameters) {
@@ -46,33 +47,43 @@ public class DBFile extends StorageFile {
     private static Object sendQueryStatement(String sql, String query, Object... parameters) {
         Object result = null;
 
-        try {
-            try ( Connection conn = connect()) {
-                if ((parameters == null || parameters.length == 0) && query == null) {
-                    //Simple statement
-                    Statement statement = conn.createStatement();
+
+        try (Connection conn = connect()) {
+
+            if(conn == null) {
+                throw new NullPointerException("Connection is null");
+            }
+
+            if ((parameters == null || parameters.length == 0) && query == null) {
+                //Simple statement
+                try (Statement statement = conn.createStatement()) {
                     statement.execute(sql);
-                } else {
-                    PreparedStatement ps = conn.prepareStatement(sql);
+                    return null;
+                }
+            }
+
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                if(parameters != null) {
                     for (int i = 0; i < parameters.length; i++) {
                         ps.setObject(i + 1, parameters[i]);
                     }
+                }
 
-                    if (query == null) {
-                        //Prepared statement
-                        ps.execute();
-                    } else {
-                        //Query statement
-                        ResultSet rs = ps.executeQuery();
-                        if (rs.next()) {
-                            result = rs.getObject(query);
-                        }
+                if (query == null) {
+                    //Prepared statement
+                    ps.execute();
+                } else {
+                    //Query statement
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        result = rs.getObject(query);
                     }
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException|NullPointerException e) {
             e.printStackTrace();
         }
+
         return result;
     }
 
@@ -96,8 +107,8 @@ public class DBFile extends StorageFile {
 
         String sql = "SELECT toggle FROM aurora WHERE player = ?";
         Object toggleInt = sendQueryStatement(sql, "toggle", playerName);
-        if (toggleInt != null && toggleInt instanceof Integer) {
-            status = (Integer) toggleInt == 1;
+        if (toggleInt instanceof Integer integer) {
+            status = integer == 1;
         }
         return status;
     }

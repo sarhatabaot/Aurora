@@ -29,6 +29,7 @@ public class ParticleFileManager {
         builder.registerTypeAdapter(RandomNumber.class, new RandomNumber.RandomNumberDeserializer());
         gson = builder.create();
 
+        //todo, uhrm, we can get this through bukkit api
         try {
             //Create default particle files if not exists
             if (!PARTICLE_FOLDER.isDirectory() || !Files.newDirectoryStream(PARTICLE_FOLDER.toPath()).iterator().hasNext()) {
@@ -36,13 +37,14 @@ public class ParticleFileManager {
 
                 try ( //Use ChatBuilder.fileSeparator instead of File.separator to sanitise escape characters in Windows filepaths
                          JarFile jar = new JarFile(new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().
-                                replace("%20", " "))) //Read .jar file
+                                replace("%20", " "))) //Read .jar file //todo no need for all of this..
                         ) {
                     final Enumeration<JarEntry> entries = jar.entries(); //gives ALL entries in jar
                     while (entries.hasMoreElements()) {
                         final String path = entries.nextElement().getName();
                         final String name = path.split("/")[path.split("/").length - 1];
                         if (path.contains("particles/") && (name.endsWith(".json") || name.endsWith(".txt"))) {
+                            //todo, uhrm, we can get this through bukkit api
                             Files.copy(this.getClass().getClassLoader().getResourceAsStream("particles/" + name), new File(PARTICLE_FOLDER,
                                     name).toPath(), StandardCopyOption.REPLACE_EXISTING);
                         }
@@ -83,7 +85,7 @@ public class ParticleFileManager {
 
     public ParticleFile getParticleByName(String particleName) {
         for (ParticleFile particleFile : getParticles()) {
-            if (particleFile.getName().toUpperCase().equals(particleName.toUpperCase())) {
+            if (particleFile.getName().equalsIgnoreCase(particleName)) {
                 return particleFile;
             }
         }

@@ -57,7 +57,7 @@ public class ParticleFileCache {
     }
 
     public static void reload() {
-        ParticleFileManager.INSTANCE.reload();
+        ParticleFileManager.reload();
         INSTANCE = new ParticleFileCache();
     }
 }

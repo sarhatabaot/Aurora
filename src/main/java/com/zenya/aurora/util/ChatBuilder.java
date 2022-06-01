@@ -63,9 +63,9 @@ public class ChatBuilder {
     public String build() {
         //Placeholders
         text = text == null ? "" : ChatColor.translateAlternateColorCodes('&', text);
-        text = text.replaceAll("%tps%", Float.toString(TrackTPSTask.INSTANCE.getAverageTps()));
-        text = player == null ? text : text.replaceAll("%world%", player.getWorld().getName());
-        text = player == null ? text : text.replaceAll("%player%", player.getName());
+        text = text.replace("%tps%", Float.toString(TrackTPSTask.INSTANCE.getAverageTps()));
+        text = player == null ? text : text.replace("%world%", player.getWorld().getName());
+        text = player == null ? text : text.replace("%player%", player.getName());
 
         if (args != null && !args.isEmpty()) {
             for (int i = 0; i < args.size(); i++) {

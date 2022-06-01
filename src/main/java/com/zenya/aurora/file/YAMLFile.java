@@ -65,7 +65,7 @@ public class YAMLFile extends StorageFile {
 
             //Update file
             if (getFileVersion() != fileVersion) {
-                File oldConfigFile = new File(directory, fileName + ".v" + String.valueOf(getFileVersion()));
+                File oldConfigFile = new File(directory, fileName + ".v" + getFileVersion());
                 FileUtil.copy(file, oldConfigFile);
                 file.delete();
                 origConfig.save(file);
@@ -140,11 +140,9 @@ public class YAMLFile extends StorageFile {
     }
 
     public List<String> getKeys(String node) {
-        List<String> val = new ArrayList<>();
+        List<String> val;
         try {
-            for (String key : config.getConfigurationSection(node).getKeys(false)) {
-                val.add(key);
-            }
+            val = new ArrayList<>(config.getConfigurationSection(node).getKeys(false));
         } catch (Exception e) {
             val = new ArrayList<>();
             e.printStackTrace();
@@ -153,11 +151,9 @@ public class YAMLFile extends StorageFile {
     }
 
     public List<String> getList(String node) {
-        List<String> val = new ArrayList<>();
+        List<String> val;
         try {
-            for (String s : config.getStringList(node)) {
-                val.add(s);
-            }
+            val = new ArrayList<>(config.getStringList(node));
         } catch (Exception e) {
             val = new ArrayList<>();
             e.printStackTrace();

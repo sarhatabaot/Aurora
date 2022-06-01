@@ -9,6 +9,7 @@ softdepend: [WorldGuard, LightAPI]
 libraries:
   - org.bstats:bstats-bukkit:${bstats.bukkit}
   - co.aikar:acf-paper:${acf.version}
+  - org.xerial:sqlite-jdbc:${sqlite.jdbc.version}
 
 permissions:
   aurora.*:

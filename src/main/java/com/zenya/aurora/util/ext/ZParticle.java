@@ -3,7 +3,6 @@ package com.zenya.aurora.util.ext;
 import com.google.common.base.Enums;
 import com.zenya.aurora.Aurora;
 import com.zenya.aurora.api.ParticleFactory;
-import org.bukkit.Color;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;

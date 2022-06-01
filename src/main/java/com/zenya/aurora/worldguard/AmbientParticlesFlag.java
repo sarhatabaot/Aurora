@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class AmbientParticlesFlag {
 
@@ -49,8 +50,9 @@ public class AmbientParticlesFlag {
         }
 
         for (ProtectedRegion region : regions.getRegions()) {
-            if (region.getFlag(flag) != null && !region.getFlag(flag).isEmpty()) {
-                for (String particleName : region.getFlag(flag)) {
+            Set<String> regionFlag = region.getFlag(flag);
+            if (regionFlag != null && !regionFlag.isEmpty()) {
+                for (String particleName : regionFlag) {
                     ParticleFile particleFile = ParticleFileManager.INSTANCE.getParticleByName(particleName);
                     if (particleFile != null && !enabledParticles.contains(particleFile)) {
                         enabledParticles.add(particleFile);

@@ -110,7 +110,7 @@ public class Listeners implements Listener {
 
         //Register new tasks
         List<ParticleFile> biomeParticles = ParticleFileCache.INSTANCE.getClass(biomeName);
-        if (WGManager.INSTANCE.getWorldGuard() != null) {
+        if (WGManager.getWorldGuard() != null) {
             List<ParticleFile> regionParticles = AmbientParticlesFlag.INSTANCE.getParticles(player);
             //WorldGuard support
             if (!regionParticles.isEmpty()) {

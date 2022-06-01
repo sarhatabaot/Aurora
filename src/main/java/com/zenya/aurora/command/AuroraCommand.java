@@ -156,6 +156,7 @@ public class AuroraCommand extends BaseCommand {
 
         chat.sendMessages("command.fixlighting.start");
         new BukkitRunnable() {
+            @SuppressWarnings("deprecation")
             @Override
             public void run() {
                 for (ChunkContainer container : LocationTools.getSurroundingChunks(player.getLocation().getChunk(), chunks)) {

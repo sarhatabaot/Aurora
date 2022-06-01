@@ -30,18 +30,16 @@ public class ParticleFile {
             if (biomes != null && biomes.length != 0) {
                 for (String biome : biomes) {
                     if (biome.toUpperCase().startsWith("PRESENT:")) {
-                        String present = biome.substring(8).replaceAll(" ", "");
+                        String present = biome.substring(8).replace(" ", "");
                         if (presentsFile.getList(present) != null && !presentsFile.getList(present).isEmpty()) {
-                            for (String presentBiome : presentsFile.getList(present)) {
-                                finalBiomes.add(presentBiome);
-                            }
+                            finalBiomes.addAll(presentsFile.getList(present));
                         }
                     } else {
                         finalBiomes.add(biome);
                     }
                 }
             }
-            return finalBiomes.toArray(new String[finalBiomes.size()]);
+            return finalBiomes.toArray(new String[0]);
         }
 
         public double getSpawnDistance() {
